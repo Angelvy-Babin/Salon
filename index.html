@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GEOKIM-HAIR, salon de coiffure mixte premium a Brazzaville. Coiffure, barber, soins, manicure, pedicure et makeup avec reservation en ligne et WhatsApp.">
+  <title>GEOKIM-HAIR | Salon Premium a Brazzaville</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="loader" id="loader">
+    <div class="loader-mark">G</div>
+    <p>GEOKIM-HAIR</p>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a href="#accueil" class="brand" aria-label="GEOKIM-HAIR accueil">
+      <span class="brand-icon">G</span>
+      <span>GEOKIM-HAIR</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">A propos</a>
+      <a href="#services">Services</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#avis">Avis</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#reservation">Reserver</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content" data-aos="fade-up">
+        <span class="eyebrow">Salon mixte premium a Brazzaville</span>
+        <h1>GEOKIM-HAIR</h1>
+        <p class="hero-slogan">GEOKIM-HAIR — L'elegance au service de votre beaute.</p>
+        <div class="hero-actions">
+          <a href="#reservation" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Reserver maintenant</a>
+          <a href="#services" class="btn btn-ghost"><i class="fa-solid fa-scissors"></i> Voir les services</a>
+        </div>
+      </div>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="250">
+        <article><strong>70+</strong><span>Prestations</span></article>
+        <article><strong>4.9</strong><span>Note clients</span></article>
+        <article><strong>Mixte</strong><span>Coiffure & beaute</span></article>
+      </div>
+    </section>
+
+    <section class="section about" id="apropos">
+      <div class="section-heading" data-aos="fade-up">
+        <span class="eyebrow">Notre signature</span>
+        <h2>Un salon  moderne, precis et luxueux.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-media" data-aos="zoom-in">
+          <img src="../assets/AB.jpg" alt="Coiffure premium GEOKIM-HAIR">
+        </div>
+        <div class="about-copy" data-aos="fade-left">
+          <p>GEOKIM-HAIR accueille femmes, hommes et enfants dans un univers ou l'expertise capillaire rencontre l'hospitalite congolaise. Notre mission est simple: reveler chaque style avec technique, elegance et confort.</p>
+          <p>Du barber shop premium aux coiffures de ceremonie, de la manicure au makeup, chaque prestation est pensee comme un moment de transformation. Notre vision: devenir l'adresse beaute de reference a Brazzaville.</p>
+          <div class="about-cards">
+            <article><i class="fa-solid fa-gem"></i><h3>Ambiance luxe</h3><p>Materiaux sombres, touches violettes, accueil attentif.</p></article>
+            <article><i class="fa-solid fa-user-check"></i><h3>Experts mixtes</h3><p>Coiffure femme, barber, soins, makeup et ongles.</p></article>
+            <article><i class="fa-solid fa-wand-magic-sparkles"></i><h3>Resultat net</h3><p>Diagnostic, conseil et finition photogenique.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="section-heading" data-aos="fade-up">
+        <span class="eyebrow">Prestations</span>
+        <h2>Services dynamiques, prix transparents, reservation rapide.</h2>
+      </div>
+      <div class="service-toolbar" data-aos="fade-up">
+        <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="search" id="serviceSearch" placeholder="Rechercher une prestation"></div>
+        <select id="categoryFilter" aria-label="Filtrer par categorie"></select>
+        <button class="admin-toggle" id="adminToggle" type="button" aria-expanded="false" aria-controls="admin"><i class="fa-solid fa-lock"></i> Admin</button>
+      </div>
+      <div class="services-grid" id="servicesGrid"></div>
+
+      <div class="admin-panel" data-aos="fade-up" id="admin" hidden>
+        <div class="admin-head">
+          <div>
+            <span class="eyebrow">Admin frontend</span>
+            <h3>Gestion locale des services</h3>
+          </div>
+          <button class="btn btn-ghost small" id="resetServices"><i class="fa-solid fa-rotate-left"></i> Reinitialiser</button>
+        </div>
+        <form class="admin-form" id="serviceForm">
+          <input type="hidden" id="serviceId">
+          <label>Nom<input type="text" id="serviceName" required placeholder="Ex: Coupe VIP"></label>
+          <label>Description<input type="text" id="serviceDescription" required placeholder="Description courte"></label>
+          <label>Prix FCFA<input type="number" id="servicePrice" min="0" required placeholder="15000"></label>
+          <label>Categorie<input type="text" id="serviceCategory" required placeholder="Services homme"></label>
+          <label>Image<input type="text" id="serviceImage" required placeholder="../assets/Homme1.jpg"></label>
+          <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Enregistrer</button>
+        </form>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Service</th><th>Categorie</th><th>Prix</th><th>Actions</th></tr></thead>
+            <tbody id="adminTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="galerie">
+      <div class="section-heading" data-aos="fade-up">
+        <span class="eyebrow">Galerie</span>
+        <h2>Inspirations coiffure, barber, nails et makeup.</h2>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <img src="../assets/glam.jpg" alt="Tresses africaines">
+        <img src="../assets/Homme5.jpg" alt="Barber shop">
+        <img src="../assets/Manicure2.jpg" alt="Manicure luxe">
+        <img src="../assets/Pedicure3.jpg" alt="Pedicure spa">
+        <img src="../assets/Makeup6.jpg" alt="Makeup professionnel">
+        <img src="../assets/Perruque5.jpg" alt="Pose de perruque">
+        <img src="../assets/Fillette3.jpg" alt="Locks homme">
+        <img src="../assets/garçon2.jpg" alt="Avant apres coiffure">
+      </div>
+    </section>
+
+    <section class="section testimonials" id="avis">
+      <div class="section-heading" data-aos="fade-up">
+        <span class="eyebrow">Avis clients</span>
+        <h2>Une experience qui reste en tete.</h2>
+      </div>
+      <div class="testimonial-shell" data-aos="fade-up">
+        <button class="slider-btn" id="prevTestimonial" aria-label="Avis precedent"><i class="fa-solid fa-chevron-left"></i></button>
+        <article class="testimonial-card" id="testimonialCard"></article>
+        <button class="slider-btn" id="nextTestimonial" aria-label="Avis suivant"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <section class="section team" id="equipe">
+      <div class="section-heading" data-aos="fade-up">
+        <span class="eyebrow">Equipe</span>
+        <h2>Des talents complementaires pour chaque style.</h2>
+      </div>
+      <div class="team-grid">
+        <article data-aos="fade-up"><img src="../assets/Kimia.jpg" alt="Kimia"><h3>Kimia N.</h3><p>Directrice artistique coiffure femme</p><div><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-facebook-f"></i></div></article>
+        <article data-aos="fade-up" data-aos-delay="100"><img src="../assets/Barbier.jpg" alt="Geo"><h3>Geo M.</h3><p>Barbier premium & contours</p><div><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-tiktok"></i></div></article>
+        <article data-aos="fade-up" data-aos-delay="200"><img src="../assets/Makeup3.jpg" alt="Arielle"><h3>Arielle B.</h3><p>Makeup artist mariage</p><div><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-whatsapp"></i></div></article>
+        <article data-aos="fade-up" data-aos-delay="300"><img src="../assets/Manicure4.jpg" alt="Merveille"><h3>Merveille O.</h3><p>Nail artist & pedicure spa</p><div><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-facebook-f"></i></div></article>
+      </div>
+    </section>
+
+    <section class="section booking" id="reservation">
+      <div class="section-heading" data-aos="fade-up">
+        <span class="eyebrow">Reservation</span>
+        <h2>Planifiez votre rendez-vous GEOKIM-HAIR.</h2>
+      </div>
+      <form class="booking-form glass" id="bookingForm" data-aos="zoom-in">
+        <label>Service<select id="bookingService" required></select></label>
+        <label>Date<input type="date" id="bookingDate" required></label>
+        <label>Heure<input type="time" id="bookingTime" required></label>
+        <label>Nom<input type="text" id="bookingName" required placeholder="Votre nom"></label>
+        <label>Telephone<input type="tel" id="bookingPhone" required placeholder="+242 ..."></label>
+        <label class="full">Message<textarea id="bookingMessage" rows="4" placeholder="Preference, details, inspiration..."></textarea></label>
+        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-check"></i> Confirmer la reservation</button>
+        <button class="btn btn-whatsapp" type="button" id="bookingWhatsapp"><i class="fa-brands fa-whatsapp"></i> Reserver via WhatsApp</button>
+      </form>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="section-heading" data-aos="fade-up">
+        <span class="eyebrow">Contact</span>
+        <h2>Retrouvez GEOKIM-HAIR a Brazzaville.</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info glass" data-aos="fade-right">
+          <p><i class="fa-solid fa-phone"></i> +242 06 000 00 00</p>
+          <p><i class="fa-solid fa-envelope"></i> contact@geokim-hair.cg</p>
+          <p><i class="fa-solid fa-location-dot"></i> Centre-ville, Brazzaville, Congo</p>
+          <p><i class="fa-solid fa-clock"></i> Lun-Sam: 8h30-20h00 | Dim: sur rendez-vous</p>
+          <form class="contact-form">
+            <input type="text" placeholder="Nom">
+            <input type="email" placeholder="Email">
+            <textarea rows="4" placeholder="Votre message"></textarea>
+            <button class="btn btn-primary" type="button">Envoyer</button>
+          </form>
+        </div>
+        <iframe title="Carte Brazzaville" data-aos="fade-left" src="https://www.google.com/maps?q=Brazzaville%20Congo&output=embed" loading="lazy"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <a href="#accueil" class="brand"><span class="brand-icon">G</span><span>GEOKIM-HAIR</span></a>
+      <p>Salon de coiffure mixte, barber shop et institut beaute premium a Brazzaville.</p>
+    </div>
+    <div><h3>Liens</h3><a href="#services">Services</a><a href="#reservation">Reservation</a><a href="#contact">Contact</a></div>
+    <div><h3>Newsletter</h3><div class="newsletter"><input type="email" placeholder="Votre email"><button><i class="fa-solid fa-paper-plane"></i></button></div></div>
+    <div><h3>Social</h3><div class="social"><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-tiktok"></i><i class="fa-brands fa-whatsapp"></i></div></div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Retour en haut"><i class="fa-solid fa-arrow-up"></i></button>
+  <a class="floating-whatsapp" id="floatingWhatsapp" href="#" aria-label="Reserver via WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <div class="lightbox" id="lightbox"><button aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button><img src="" alt="Agrandissement galerie"></div>
+  <div class="modal" id="successModal"><div class="modal-card"><i class="fa-solid fa-circle-check"></i><h3>Reservation enregistree</h3><p>Merci. GEOKIM-HAIR vous contactera pour confirmer votre rendez-vous.</p><button class="btn btn-primary" id="closeModal">Parfait</button></div></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
