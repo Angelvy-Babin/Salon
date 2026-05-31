@@ -73,7 +73,7 @@ button, input, select, textarea { font: inherit; }
 .hero { min-height: 100vh; position: relative; display: grid; align-items: center; padding: 150px max(24px, calc((100vw - 1180px) / 2)) 80px; overflow: hidden; }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url("../assets/Quality Human Hair.jfif") center/cover fixed;
+  background: url("Quality Human Hair.jfif") center/cover fixed;
   transform: scale(1.04);
 }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(5,4,9,.92), rgba(61,13,112,.62), rgba(5,4,9,.5)); }
